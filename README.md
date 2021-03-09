@@ -36,6 +36,55 @@ make lint
 # Example Output
 
 ```
+[I] Crawling http://yahoo.com
+[+] Fetching robots.txt
+[I] robots.txt processed
+[I] Found 4 available CPUs
+[I] Worker:0 processing L1 http://yahoo.com
+[I] Worker #1 Tasks completed
+[I] Worker #2 Tasks completed
+[I] Worker #3 Tasks completed
+[I] Controller Tasks completed
+[I] Worker #0 Tasks completed
+
+
+[SUMMARY]
+Crawled:     1 pages
+Discovered:  23 links
+Responses:   1 requests
+Errors:      0 requests
+
+
+[HIERARCHY]
+| http://yahoo.com
+| --> http://yahoo.com/lifestyle/6-alarming-similarities-between-meghan-214106886.html
+| --> http://yahoo.com/news/royal-biographer-petulant-harry-meghan-113757289.html
+| --> http://yahoo.com/style/prince-charles-very-specific-rules-121000931.html
+| --> http://yahoo.com/news/meghan-markle-interaction-fan-during-003325894.html
+| --> http://yahoo.com/lifestyle/tea-1-kind-drink-every-165715845.html
+| --> http://yahoo.com/style/prince-charles-prince-harry-meghan-markle-interview-oprah-085044768.html
+| --> http://yahoo.com/news/piers-morgan-storms-off-good-113705679.html
+| --> http://yahoo.com/style/york-woman-discovers-secret-apartment-184139864.html
+| --> http://yahoo.com/topics/meghan-markle
+| --> http://yahoo.com/news/have-your-say-sympathy-harry-meghan-oprah-interview-085629035.html
+| --> http://yahoo.com/lifestyle/meghan-markles-first-time-meeting-164512132.html
+| --> http://yahoo.com/style/early-menopause-woman-26-secret-learn-about-shame-111505537.html
+| --> http://yahoo.com/news/lorraine-kelly-shocks-viewers-prince-102925351.html
+| --> http://yahoo.com/news/piers-morgan-storms-out-gmb-081005508.html
+| --> http://yahoo.com/news/jon-snow-baby-73-092639260.html
+| --> http://yahoo.com/entertainment/serena-williams-calls-her-own-201735791.html
+| --> http://yahoo.com/news/dan-walker-bbc-breakfast-piers-morgan-good-morning-britain-stormed-off-132904779.html
+| --> http://yahoo.com/news/french-schoolgirl-admits-lying-murdered-083603778.html
+| --> http://yahoo.com/topics
+| --> http://yahoo.com/news/oprahs-interview-prince-harry-meghan-022857584.html
+| --> http://yahoo.com/news/piers-morgan-torn-apart-hateful-091327759.html
+| --> http://yahoo.com/lifestyle/meghan-markle-trying-send-message-170135547.html
+| --> http://yahoo.com/lifestyle/1-best-tea-flat-belly-140611584.html
+```
+
+
+
+```
 [I] Crawling http://news.ycombinator.com
 [+] Fetching robots.txt
 [I] robots.txt processed
@@ -213,7 +262,6 @@ Errors:      0 requests
 | --> http://news.ycombinator.com/hide?id=26393824&goto=news
 | --> http://news.ycombinator.com/from?site=dougallj.github.io
 | --> http://news.ycombinator.com/user?id=todsacerdoti
-[DONE]
 ```
 
 2021, London.

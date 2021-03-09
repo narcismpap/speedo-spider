@@ -199,17 +199,22 @@ class Speedo:
         """
         Triggers a crawling session
         """
+        print("[I] Found %d available CPUs" % multiprocessing.cpu_count())
+
+        # controller
         controller = gevent.spawn(speedo_controller, self.session)
+        tasks = [controller]
 
-        gevent.joinall([
-            controller,
+        # workers
+        for z in range(0, multiprocessing.cpu_count()):
+            tasks.append(
+                gevent.spawn(speedo_worker, z, self.session),
+            )
 
-            # workers
-            gevent.spawn(speedo_worker, 1, self.session),
-            gevent.spawn(speedo_worker, 2, self.session),
-            gevent.spawn(speedo_worker, 3, self.session),
-        ])
+        # run all tasks, blocking
+        gevent.joinall(tasks)
 
+        # execution report provided by controller
         self.scr = controller.value
 
     def report(self):
