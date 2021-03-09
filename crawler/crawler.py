@@ -34,11 +34,11 @@ CRAWL_DELAY = 1
 
 # Links scheduled by controller
 # Consumer: speedo_worker; Publisher: speedo_controller
-download_queue = Queue(maxsize=multiprocessing.cpu_count())  # Queue<SpeedoJob>
+download_queue = Queue(maxsize=None)  # Queue<SpeedoJob>
 
 # Links pending review by controller
 # Consumer: speedo_controller; Publisher: speedo_worker
-review_queue = Queue(maxsize=8)  # Queue<SpeedoResult>
+review_queue = Queue(maxsize=None)  # Queue<SpeedoResult>
 
 
 class SpeedoJob:
@@ -91,6 +91,13 @@ class SpeedoSession:
 
         print("[I] robots.txt processed")
 
+def download_url(url):
+    """
+    Downloads single URL using httplib2
+    """
+    h = httplib2.Http("/tmp/speedo-cache")
+    return h.request(url, method="GET", headers=HEADERS)
+
 def speedo_worker(w_num, session):
     """
     Async Worker
@@ -101,8 +108,7 @@ def speedo_worker(w_num, session):
             job = download_queue.get(timeout=5)
             print(f'[I] Worker:{w_num} processing L{job.level} {job.url}')
 
-            h = httplib2.Http("/tmp/speedo-cache")
-            resp_header, resp_content = h.request(job.url, method="GET", headers=HEADERS)
+            resp_header, resp_content = download_url(job.url)
 
             if resp_header['status'] != '200':
                 print("[E] Status %s while downloading %s" % (resp_header['status'], job.url))
@@ -162,6 +168,10 @@ def speedo_controller(session):
             job_result = review_queue.get(timeout=5)
             scr.responses.append(job_result)
 
+            print("[+] Subtask completed: %d links found at %s" % (
+                len(job_result.links), job_result.url
+            ))
+
             for link in job_result.links:
                 # respect robots.txt access restrictions
                 if not session.robots.can_fetch("*", link):
@@ -178,6 +188,8 @@ def speedo_controller(session):
                     scr.crawled.add(link)
 
                 scr.discovered.add(link)
+
+            gevent.sleep(0)
 
     except Empty:
         print('[I] Controller Tasks completed')

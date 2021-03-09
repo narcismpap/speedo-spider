@@ -1,5 +1,5 @@
 # Speedo
-Hello World, meet Speedo! The world's least sophsisticated non-recursive gevent-based Python crawler.
+Hello World, meet Speedo! The world's least sophsisticated somewhat-recursive gevent-based Python crawler.
 
 ## Usage
 ```
@@ -30,7 +30,7 @@ make lint
 
 # Todo
 
-* [ ] fix unit testing fixtures, looks like double monkey patching by gevent and mocket has undefined behavior
+* [x] fix unit testing fixtures, looks like double monkey patching by gevent and mocket has undefined behavior
 * [ ] exponential backoff capabilities
 
 # Example Output
