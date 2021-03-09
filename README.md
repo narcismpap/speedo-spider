@@ -1,5 +1,5 @@
 # Speedo
-Hello World, meet Speedo! The world's least sophsisticated somewhat-recursive gevent-based Python crawler.
+Hello World, meet Speedo! The world's least sophisticated somewhat-recursive gevent-based Python crawler.
 
 ## Usage
 ```
@@ -10,8 +10,7 @@ docker run --rm -v $(pwd)/crawler:/speedo/code docker.pkg.github.com/narcismpap/
 This was a fun coding challenge with a four hour deadline.
 
 ## Requirements
-Hello World, meet Speedo! The world's least sophisticated somewhat-recursive gevent-based Python crawler.
-
+Web Crawler using python that crawls a single user-provided domain. After crawling, it should print links between pages.
 
 ## Commands
 ```
