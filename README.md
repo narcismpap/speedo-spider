@@ -3,14 +3,14 @@ Hello World, meet Speedo! The world's least sophsisticated somewhat-recursive ge
 
 ## Usage
 ```
-docker run --rm -v $(pwd)/crawler:/speedo/code speedo:latest "http://news.ycombinator.com"
+docker run --rm -v $(pwd)/crawler:/speedo/code docker.pkg.github.com/narcismpap/speedo-spider/speedo:latest "http://news.ycombinator.com"
 ```
 
 ## Purpose
 This was a fun coding challenge with a four hour deadline.
 
 ## Requirements
-Web Crawler using python that crawls a single user-provided domain. After crawling, it should print links between pages.
+Hello World, meet Speedo! The world's least sophisticated somewhat-recursive gevent-based Python crawler.
 
 
 ## Commands
